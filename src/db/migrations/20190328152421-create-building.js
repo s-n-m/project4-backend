@@ -1,0 +1,44 @@
+'use strict';
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('buildings', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      location: {
+        type: Sequelize.STRING
+      },
+      type: {
+        type: Sequelize.STRING
+      },
+      gender: {
+        type: Sequelize.STRING
+      },
+      city: {
+        type: Sequelize.STRING
+      },
+      image: {
+        type: Sequelize.STRING
+      },
+      description: {
+        type: Sequelize.STRING
+      },
+      createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+          field: "created_at"
+        },
+        updatedAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+          field: "updated_at"
+        }
+    });
+  },
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('buildings');
+  }
+};
