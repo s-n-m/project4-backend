@@ -27,7 +27,8 @@ router.post("/sign-up", (req, res, next) => {
       } else {
         return User.create({
           email: credentials.email,
-          hashedPassword: credentials.password
+          hashedPassword: credentials.password,
+          phoneNumber: credentials.phoneNumber
         });
       }
     })
@@ -55,7 +56,7 @@ router.post("/sign-up", (req, res, next) => {
       });
     })
     // pass any errors along to the error handler
-    .catch(next);
+   .catch(e => next());
 });
 
 router.post("/sign-in", localAuth, (req, res, next) => {
@@ -106,7 +107,7 @@ router.patch("/change-password", tokenAuth, (req, res, next) => {
         throw new BadParamsError();
       }
     })
-    .catch(next);
+    .catch(e => next());
 });
 
 export default router;

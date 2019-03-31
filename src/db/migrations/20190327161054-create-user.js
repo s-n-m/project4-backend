@@ -18,6 +18,10 @@ module.exports = {
         field: "hashed_password",
         allowNull: false
       },
+      phoneNumber: {
+        type: Sequelize.STRING,
+        field: "phone_number"
+         },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

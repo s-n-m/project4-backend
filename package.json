@@ -1,12 +1,12 @@
 {
   "name": "backend-express-api",
   "version": "0.0.1",
-  "description": "",
+  "description": "[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)",
   "main": "server.js",
   "scripts": {
     "start": "node dist/server.js",
     "build": "babel src --out-dir dist --copy-files",
-    "dev": "node_modules/.bin/nodemon src/server.js --exec babel-node --",
+    "dev": "nodemon src/server.js --exec babel-node --",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +20,7 @@
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
+    "mysql": "^2.16.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
@@ -37,5 +38,13 @@
   "engines": {
     "node": "10.15.0",
     "npm": "6.4.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-n-m/project4-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/s-n-m/project4-backend/issues"
+  },
+  "homepage": "https://github.com/s-n-m/project4-backend#readme"
 }

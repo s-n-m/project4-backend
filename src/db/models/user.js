@@ -13,8 +13,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         field: "hashed_password",
         allowNull: false
-      }
+      },
+       phoneNumber: {
+        type: DataTypes.STRING,
+        
+       }
     },
+   
     {
       tableName: "users",
       hooks: {
@@ -39,7 +44,12 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.associate = models => {
-    // associations can be defined here
-  };
+// one user has many Buildings
+  User.hasMany(models.Building, {
+    foreignKey: "user_id",
+    as: "Building"
+  });
+
+};
   return User;
 };
