@@ -53,14 +53,14 @@ app.use(buildingRoutes);
 app.use(errorHandler);
 
 // run API on designated port (4741 in this case)
-sequelize.sync({force: true})
-  .then(()=>{
-    app.listen(port, () => {
-      console.log("listening on port " + port);
-    });
-  })
-
-
+// sequelize.sync({force: true})
+//   .then(()=>{
+//     
+//     
+//   })
+app.listen(port, () => {
+  console.log("listening on port " + port);
+});
 
 // needed for testing
 export default app;
