@@ -60,12 +60,12 @@ router.post("/building", tokenAuth, (req, res, next) => {
 router.put("/building/:id", tokenAuth, (req, res, next) => {
     models.Building.findByPk(req.params.id).then(building => {
         building.update({
-            location: req.body.location,
-            type: req.body.type,
-            gender: req.body.gender,
-            city: req.body.city,
-            image: req.body.image,
-            description: req.body.description
+            location: req.body.building.location,
+            type: req.body.building.type,
+            gender: req.body.building.gender,
+            city: req.body.building.city,
+            image: req.body.building.image,
+            description: req.body.building.description
         }).then(building => {
 
             res.status(200).json({
@@ -77,7 +77,8 @@ router.put("/building/:id", tokenAuth, (req, res, next) => {
 });
 
 //Delete
-router.delete("/building/:id", tokenAuth, (req, res, next) => {
+router.delete("/building/:id", tokenAuth,  (req, res, next) => {
+    // console.log(req.user.id)
     models.Building.findByPk(req.params.id)
         .then(building => {
             building.destroy().then(() => {
