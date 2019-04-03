@@ -12,7 +12,7 @@ const router = express.Router();
 
 // get all buildings
 router.get('/buildings',tokenAuth, (req, res, next) => {
-models.Building.findAll().then(building =>{
+models.Building.findAll({include: [{model: models.User}]}).then(building =>{
     res.status(200).json({
         buildings:building
     });
@@ -22,7 +22,11 @@ models.Building.findAll().then(building =>{
 
 //get single building
 router.get('/building/:id', (req, res) => {
-    models.Building.findByPk(req.params.id).then(building => {
+    models.Building.findByPk(req.params.id, {
+            include: [{
+                model: models.User
+            }]
+        }).then(building => {
         res.status(200).json({
             building: building
         });
