@@ -46,7 +46,15 @@ router.get('/building/:id', (req, res) => {
 
 //Create new building
 router.post("/building", tokenAuth, (req, res, next) => {
-    models.Building.create(req.body)
+    models.Building.create({
+        location: req.body.building.location,
+        city: req.body.building.city,
+        type: req.body.building.type,
+        image: req.body.building.image,
+        user_id: req.user.id,
+        gender: req.body.building.gender,
+        description: req.body.building.description
+        })
         .then(buildingNewFromDb => {
             res.status(201).json({
                 building: buildingNewFromDb
@@ -77,7 +85,7 @@ router.put("/building/:id", tokenAuth, (req, res, next) => {
 });
 
 //Delete
-router.delete("/building/:id", tokenAuth,  (req, res, next) => {
+router.delete("/building/:id",  (req, res, next) => {
     // console.log(req.user.id)
     models.Building.findByPk(req.params.id)
         .then(building => {
