@@ -25,6 +25,7 @@ router.post("/sign-up", (req, res, next) => {
       ) {
         throw new BadParamsError();
       } else {
+        console.log(credentials)
         return User.create({
           email: credentials.email,
           hashedPassword: credentials.password,
@@ -56,7 +57,7 @@ router.post("/sign-up", (req, res, next) => {
       });
     })
     // pass any errors along to the error handler
-   .catch(e => next());
+    .catch(e => next());
 });
 
 router.post("/sign-in", localAuth, (req, res, next) => {

@@ -7,7 +7,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
+import logger from "morgan"
 import errorHandler from "./lib/error_handler"; //  error handling middleware
 import auth from "./lib/passport_startegy"; // passport authentication middleware
 
@@ -22,14 +22,14 @@ const app = express();
 
 // set CORS headers on response from this API using the `cors` NPM package
 // `CLIENT_ORIGIN` is an environment variable that will be set on Heroku
-// app.use(cors({ origin: process.env.CLIENT_ORIGIN, credentials: true }));
+app.use(cors({ origin: process.env.CLIENT_ORIGIN, credentials: true }));
+app.use(logger("dev"))
+// const corsOptions = {
+//   origin: '*',
+//   credentials: true
+// };
 
-const corsOptions = {
-  origin: '*',
-  credentials: true
-};
-
-app.use(cors(corsOptions));
+// app.use(cors());
 // define port for API to run on
 const port = process.env.PORT;
 
